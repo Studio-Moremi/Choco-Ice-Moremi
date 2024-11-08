@@ -1,2 +1,9 @@
 # Choco-Ice-Moremi
-초코 아이스 모레미의 오픈소스 코드
+This repository is choco-ice-moremi's code.
+
+[License]
+GPL 3.0
+
+[Made]
+- studio moremi
+ - cookedas1 (code)
