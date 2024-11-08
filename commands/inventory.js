@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const db = require('../models/db');
+const db = require('../utils/db');
 
 const data = new SlashCommandBuilder()
   .setName('인벤토리')

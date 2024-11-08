@@ -16,7 +16,7 @@ new CommandHandler({
   client,
   commandsPath: path.join(__dirname, "commands"),
   validationsPath: path.join(__dirname, "validations"),
-  modelsPath: path.join (__dirname, "models"),
+  utilsPath: path.join (__dirname, "utils"),
   
 });
 
