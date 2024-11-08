@@ -15,7 +15,6 @@ const client = new Client({
 new CommandHandler({
   client,
   commandsPath: path.join(__dirname, "commands"),
-  utilsPath: path.join(__dirnane, "utils"),
   validationsPath: path.join(__dirname, "validations"),
   modelsPath: path.join (__dirname, "models"),
   
