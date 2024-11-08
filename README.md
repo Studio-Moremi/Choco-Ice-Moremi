@@ -7,3 +7,8 @@ GPL 3.0
 [Made]
 - studio moremi
  - cookedas1 (code)
+
+[Use laugage]
+- nodejs 18.0.0
+- sqlite3
+- mysql

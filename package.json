@@ -8,7 +8,7 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/cookedas1/Choco-Ice-Moremi.git"
+      "url": "git+https://github.com/Studio-Moremi/Choco-Ice-Moremi.git"
     },
     "dependencies": {
         "mongoose": "8.8.0",
@@ -17,14 +17,13 @@
         "axios": "1.7.7",
         "cheerio": "1.0.0",
         "sqlite3": "5.1.7",
-        "djs-commander": "0.0.50",
-        "nodemon": "3.1.7"
+        "djs-commander": "0.0.50"
       },
     "keywords": [],
     "author": "cookedas1",
-    "license": "ISC",
+    "license": "GPL 3.0",
     "bugs": {
-      "url": "https://github.com/cookedas1/Choco-Ice-Moremi/issues"
+      "url": "https://github.com/Studio-Moremi/Choco-Ice-Moremi/issues"
     },
-    "homepage": "https://github.com/cookedas1/Choco-Ice-Moremi#readme"
+    "homepage": "https://github.com/cookedas1/Studio-Moremi#readme"
   }
