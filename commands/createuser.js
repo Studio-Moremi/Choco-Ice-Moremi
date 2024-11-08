@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 const db = require('../utils/db');
 
 module.exports = {
@@ -57,7 +57,7 @@ module.exports = {
       }
 
       if (i.customId === '동의') {
-        const modal = new ModalBuilder()
+        const usernameModal = new ModalBuilder()
           .setCustomId('아이디입력')
           .setTitle('아이디 만들기');
 
@@ -67,9 +67,9 @@ module.exports = {
           .setStyle(TextInputStyle.Short)
           .setRequired(true);
 
-        modal.addComponents(new ActionRowBuilder().addComponents(usernameInput));
+        usernameModal.addComponents(new ActionRowBuilder().addComponents(usernameInput));
 
-        await i.showModal(modal);
+        await i.showModal(usernameModal);
       } else if (i.customId === '동의하지 않음') {
         await i.update({ content: '가입이 취소되었어요.', components: [] });
         collector.stop();
@@ -114,7 +114,7 @@ module.exports = {
             async (err) => {
               if (err) {
                 console.error(err);
-                await modalInteraction.reply({ content: '에러가 발생했어요! 해당 에러가 지속될 경우 관리자에게 문의하세요. [Database Run ERROR]', ephemeral: true });
+                await modalInteraction.reply({ content: '에러가 발생했어요! [Database Error.]', ephemeral: true });
               } else {
                 await modalInteraction.reply({ content: '계정이 성공적으로 생성되었어요!', ephemeral: true });
               }
