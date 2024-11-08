@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 const db = require('../utils/db');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
     name: '가입',
     description: '초코 아이스 모레미에 가입해요.'
   },
-
+  
   run: async ({ interaction }) => {
     const embed = new EmbedBuilder()
       .setColor(0xffffff)
