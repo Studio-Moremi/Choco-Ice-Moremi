@@ -1,0 +1,30 @@
+{
+    "name": "choco.ice.moremi",
+    "version": "1.0.0",
+    "description": "Choco-Ice-Moremi's Open Source code",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/cookedas1/Choco-Ice-Moremi.git"
+    },
+    "dependencies": {
+        "mongoose": "8.8.0",
+        "discord.js": "14.16.3",
+        "dotenv": "16.4.5",
+        "axios": "1.7.7",
+        "cheerio": "1.0.0",
+        "sqlite3": "5.1.7",
+        "djs-commander": "0.0.50",
+        "nodemon": "3.1.7"
+      },
+    "keywords": [],
+    "author": "cookedas1",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/cookedas1/Choco-Ice-Moremi/issues"
+    },
+    "homepage": "https://github.com/cookedas1/Choco-Ice-Moremi#readme"
+  }
