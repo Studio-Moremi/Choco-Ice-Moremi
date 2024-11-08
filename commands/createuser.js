@@ -6,7 +6,7 @@ module.exports = {
     name: '가입',
     description: '초코 아이스 모레미에 가입해요.'
   },
-  
+
   run: async ({ interaction }) => {
     const embed = new EmbedBuilder()
       .setColor(0xffffff)
@@ -54,24 +54,10 @@ module.exports = {
         const consentRow = new ActionRowBuilder().addComponents(agreeButton, disagreeButton);
 
         await i.update({ embeds: [consentEmbed], components: [consentRow] });
-      } else if (i.customId === '로그인') {
-        const loginModal = new ModalBuilder()
-          .setCustomId('로그인')
-          .setTitle('로그인 아이디 입력');
+      }
 
-        const loginUsernameInput = new TextInputBuilder()
-          .setCustomId('loginUsername')
-          .setLabel('아이디를 입력하세요')
-          .setStyle(TextInputStyle.Short)
-          .setRequired(true);
-
-        loginModal.addComponents(new ActionRowBuilder().addComponents(loginUsernameInput));
-        await i.showModal(loginModal);
-      } else if (i.customId === '동의하지 않음') {
-        await i.update({ content: '가입이 취소되었어요.', components: [] });
-        collector.stop();
-      } else if (i.customId === '동의') {
-        const usernameModal = new ModalBuilder()
+      if (i.customId === '동의') {
+        const modal = new ModalBuilder()
           .setCustomId('아이디입력')
           .setTitle('아이디 만들기');
 
@@ -81,8 +67,12 @@ module.exports = {
           .setStyle(TextInputStyle.Short)
           .setRequired(true);
 
-        usernameModal.addComponents(new ActionRowBuilder().addComponents(usernameInput));
-        await i.showModal(usernameModal);
+        modal.addComponents(new ActionRowBuilder().addComponents(usernameInput));
+
+        await i.showModal(modal);
+      } else if (i.customId === '동의하지 않음') {
+        await i.update({ content: '가입이 취소되었어요.', components: [] });
+        collector.stop();
       }
     });
 
@@ -107,15 +97,16 @@ module.exports = {
               .setRequired(true);
 
             passwordModal.addComponents(new ActionRowBuilder().addComponents(passwordInput));
+
             await modalInteraction.showModal(passwordModal);
           }
         });
       } else if (modalInteraction.customId === '비밀번호입력') {
         const password = modalInteraction.fields.getTextInputValue('password');
-        const username = modalInteraction.fields.getTextInputValue('username');
 
         if (password.length >= 6 && password.length <= 12) {
           const discordId = modalInteraction.user.id;
+          const username = modalInteraction.fields.getTextInputValue('username');
 
           db.run(
             `INSERT INTO users (discord_id, username, password) VALUES (?, ?, ?)`,
@@ -123,7 +114,7 @@ module.exports = {
             async (err) => {
               if (err) {
                 console.error(err);
-                await modalInteraction.reply({ content: '에러가 발생했어요! 해당 에러가 지속될 경우 관리자에게 문의하세요.', ephemeral: true });
+                await modalInteraction.reply({ content: '에러가 발생했어요! 해당 에러가 지속될 경우 관리자에게 문의하세요. [Database Run ERROR]', ephemeral: true });
               } else {
                 await modalInteraction.reply({ content: '계정이 성공적으로 생성되었어요!', ephemeral: true });
               }
@@ -132,16 +123,6 @@ module.exports = {
         } else {
           await modalInteraction.reply({ content: '비밀번호는 6자 이상 12자 이하로 설정해야 합니다.', ephemeral: true });
         }
-      } else if (modalInteraction.customId === '로그인') {
-        const loginUsername = modalInteraction.fields.getTextInputValue('loginUsername');
-        
-        db.get(`SELECT * FROM users WHERE username = ?`, [loginUsername], async (err, row) => {
-          if (!row) {
-            await modalInteraction.reply({ content: '해당 아이디는 존재하지 않아요. 계정을 생성하시려면 회원가입 버튼을 누르세요!', ephemeral: true });
-          } else {
-            await modalInteraction.reply({ content: '로그인이 성공적으로 되었습니다!', ephemeral: true });
-          }
-        });
       }
     });
   },

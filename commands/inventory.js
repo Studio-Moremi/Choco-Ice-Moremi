@@ -10,14 +10,21 @@ module.exports = {
   run: async ({ interaction }) => {
     const discordId = interaction.user.id;
 
-    db.get(`SELECT coins FROM users WHERE discord_id = ?`, [discordId], (err, row) => {
+    db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], (err, row) => {
       if (err) {
         console.error('Database error:', err.message);
         interaction.reply('에러가 발생했어요! 해당 에러가 지속될 경우 관리자에게 문의하세요. [Database Error.]');
         return;
       }
 
-      const coinBalance = row ? row.coins : 0;
+      if (!row) {
+        return interaction.reply({
+          content: '계정에 로그인되지 않았어요. `/가입`을 통해 로그인해봐요!',
+          ephemeral: true,
+        });
+      }
+
+      const coinBalance = row.coins;
 
       db.all(`SELECT item_name FROM inventory WHERE discord_id = ?`, [discordId], (err, items) => {
         if (err) {
