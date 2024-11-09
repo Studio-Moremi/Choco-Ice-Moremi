@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, SelectMenuBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const db = require('../utils/db');
 
 const initialSharedFarm = Array(10).fill(Array(10).fill('🟫'));
@@ -41,7 +41,7 @@ module.exports = {
 
         const actionRow = new ActionRowBuilder()
           .addComponents(
-            new SelectMenuBuilder()
+            new StringSelectMenuBuilder()
               .setCustomId('shared_farm_action')
               .setPlaceholder('아이템 선택')
               .addOptions([
