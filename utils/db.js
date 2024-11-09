@@ -1,7 +1,3 @@
-/**
- * 쿸으다스 추가 (23)
- * password 칼럼 추가
- */
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
@@ -19,8 +15,6 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       discord_id TEXT UNIQUE NOT NULL,
-      username TEXT NOT NULL,
-      password TEXT NOT NULL,
       join_date TEXT DEFAULT CURRENT_TIMESTAMP,
       coins INTEGER DEFAULT 2000
     )
