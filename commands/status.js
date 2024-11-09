@@ -1,3 +1,7 @@
+/* License is GPL 3.0.
+- made by studio moremi
+ - support@studio-moremi.kro.kr
+*/
 const { SlashCommandBuilder } = require('discord.js');
 
 const data = new SlashCommandBuilder()
