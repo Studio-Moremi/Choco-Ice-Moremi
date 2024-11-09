@@ -30,7 +30,7 @@ module.exports = {
 
       const actionRow = new ActionRowBuilder()
         .addComponents(
-          new SelectMenuBuilder()
+          new StringSelectMenuBuilder()
             .setCustomId('farm_action')
             .setPlaceholder('아이템 선택')
             .addOptions([
