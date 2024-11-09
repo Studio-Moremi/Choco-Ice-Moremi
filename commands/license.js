@@ -1,4 +1,8 @@
-// 본 코드를 지울 시 라이선스 삭제로 간주합니다
+/* 본 코드를 지울 시 라이선스 삭제로 간주합니다
+License is GPL 3.0.
+- made by studio moremi
+ - support@studio-moremi.kro.kr
+*/
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 const data = new SlashCommandBuilder()
