@@ -1,3 +1,7 @@
+/* License is GPL 3.0.
+- made by studio moremi
+ - support@studio-moremi.kro.kr
+*/
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const db = require('../utils/db');
 
