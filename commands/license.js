@@ -27,7 +27,8 @@ module.exports = {
         .setDescription([
           '본 봇의 코드는 **초코 아이스 모레미** 오픈 소스 코드에서 가져왔습니다.\n',
           '이 명령어를 삭제할 시 라이선스 위반으로 간주합니다.\n',
-          '레포지토리 주소: [choco-ice-moremi](https://github.com/Teamforest-code/Choco-Ice-Moremi)'
+          '레포지토리 주소: [choco-ice-moremi](https://github.com/Teamforest-code/Choco-Ice-Moremi)',
+          '제작한 곳: [Studio Moremi](https://discord.gg/QtVTm3bzDW)'
         ].join('\n'));
     }
 
