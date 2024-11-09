@@ -6,7 +6,7 @@ module.exports = {
     name: '가입',
     description: '초코 아이스 모레미에 가입해요.'
   },
-  
+
   run: async ({ interaction }) => {
     const consentEmbed = new EmbedBuilder()
       .setColor(0xffffff)
