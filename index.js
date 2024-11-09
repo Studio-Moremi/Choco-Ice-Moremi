@@ -1,3 +1,7 @@
+/* License is GPL 3.0.
+- made by studio moremi
+ - support@studio-moremi.kro.kr
+*/
 require("dotenv").config();
 const { Client, IntentsBitField } = require("discord.js");
 const { CommandHandler } = require("djs-commander");
