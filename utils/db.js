@@ -15,6 +15,8 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       discord_id TEXT UNIQUE NOT NULL,
+      username TEXT NOT NULL,
+      password TEXT NOT NULL,
       join_date TEXT DEFAULT CURRENT_TIMESTAMP,
       coins INTEGER DEFAULT 2000
     )
@@ -24,7 +26,24 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS inventory (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       discord_id TEXT NOT NULL,
-      item_name TEXT NOT NULL
+      item_name TEXT NOT NULL,
+      quantity INTEGER DEFAULT 1
+    )
+  `);
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS personal_farm (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      discord_id TEXT NOT NULL,
+      farm_data TEXT DEFAULT ''
+    )
+  `);
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS shared_farm (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      channel_id TEXT UNIQUE NOT NULL,
+      farm_data TEXT DEFAULT ''
     )
   `);
 });
