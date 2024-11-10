@@ -2,16 +2,20 @@
 - made by studio moremi
  - support@studio-moremi.kro.kr
 */
+/**
+* 쿸으다스 수정
+* lang 추가
+**/
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const LANG = require("..\language.json");
 
 const data = new SlashCommandBuilder()
-  .setName('도움말')
-  .setDescription('도움말을 보여줘요.')
+  .setName(`help`)
+  .setDescription(`helpdesc`)
   .addStringOption(option =>
     option
       .setName('help')
-      .setDescription('조회할 도움말을 선택하세요.')
+      .setDescription(`helpoption`)
       .addChoices(
         { name: '모레미', value: '모레미' }
       )
