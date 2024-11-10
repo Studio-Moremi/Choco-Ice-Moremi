@@ -1,4 +1,3 @@
-npm install mongoose@8.8.0
 npm install discord.js@14.16.3
 npm install dotenv@16.4.5
 npm install axios@1.7.7

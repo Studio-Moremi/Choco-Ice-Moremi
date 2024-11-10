@@ -9,9 +9,9 @@ const LANG = require("../language.json");
 module.exports = {
   data: {
     name: `createuser`,
-    description: `userdesc`'
-  },
-
+    description: `userdesc`
+  }
+}
   run: async ({ interaction }) => {
     const consentEmbed = new EmbedBuilder()
       .setColor(0xffffff)
@@ -32,7 +32,6 @@ module.exports = {
     await interaction.reply({ embeds: [consentEmbed], components: [row] });
 
     const filter = i => i.customId === '동의' && i.user.id === interaction.user.id;
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
 
     collector.on('collect', async (i) => {
       const discordId = interaction.user.id;
@@ -62,14 +61,5 @@ module.exports = {
           );
         }
       });
-
-      collector.stop();
     });
-
-    collector.on('end', (collected, reason) => {
-      if (reason === 'time') {
-        interaction.editReply({ content: '시간 초과로 가입이 취소되었어요. 다시 시도해봐요!', components: [] });
-      }
-    });
-  },
-};
+  }

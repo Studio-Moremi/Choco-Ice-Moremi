@@ -3,15 +3,14 @@
  - support@studio-moremi.kro.kr
 */
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
-
 const db = require('../utils/db');
-
+const LANG = require("../language.json")
 const initialFarm = Array(5).fill(Array(5).fill('🟫'));
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('농장')
-    .setDescription('개인 농장을 보여주고 관리할 수 있어요!'),
+    .setName(`farm`)
+    .setDescription(`farmdesc`),
 
   run: async ({ interaction }) => {
     const discordId = interaction.user.id;
@@ -19,10 +18,10 @@ module.exports = {
     db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], (err, row) => {
       if (err) {
         console.error('Database error:', err.message);
-        return interaction.reply({ content: '에러가 발생했어요! 관리자에게 문의하세요.', ephemeral: true });
+        return interaction.reply({ content: `error100`, ephemeral: true });
       }
       if (!row) {
-        return interaction.reply({ content: '계정에 로그인되지 않았어요. /가입을 통해 로그인해봐요!', ephemeral: true });
+        return interaction.reply({ content: `error104`, ephemeral: true });
       }
 
       let farmStatus = initialFarm.map(row => row.join('')).join('\n');
@@ -36,14 +35,14 @@ module.exports = {
         .addComponents(
           new StringSelectMenuBuilder()
             .setCustomId('farm_action')
-            .setPlaceholder('아이템 선택')
+            .setPlaceholder(`SelectItem`)
             .addOptions([
-              { label: '상추 심기', description: '상추를 심어요.', value: 'lettuce' },
-              { label: '토마토 심기', description: '토마토를 심어요.', value: 'tomato' },
-              { label: '딸기 심기', description: '딸기를 심어요.', value: 'strawberry' },
-              { label: '물주기', description: '모든 작물에 물을 줘요.', value: 'water' },
-              { label: '썩은 식물 치우기', description: '썩은 작물을 치워요.', value: 'clear_withered' },
-              { label: '수확하기', description: '모든 작물을 수확해요.', value: 'harvest' }
+              { label: `plantLettuce`, description: 'plantLettuce1', value: 'lettuce' },
+              { label: `plantTomato`, description: `plantTomato1`, value: 'tomato' },
+              { label: `plantStrawberry`, description: `plantStrawberry1`, value: 'strawberry' },
+              { label: `waterPlants`, description: `waterPlants1`, value: 'water' },
+              { label: `clear_withered`, description: `clear_withered1`, value: 'clear_withered' },
+              { label: `harvest`, description: `harvest1`, value: 'harvest' }
             ])
         );
 

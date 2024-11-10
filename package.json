@@ -11,7 +11,6 @@
       "url": "git+https://github.com/Studio-Moremi/Choco-Ice-Moremi.git"
     },
     "dependencies": {
-        "mongoose": "8.8.0",
         "discord.js": "14.16.3",
         "dotenv": "16.4.5",
         "axios": "1.7.7",
@@ -25,5 +24,5 @@
     "bugs": {
       "url": "https://github.com/Studio-Moremi/Choco-Ice-Moremi/issues"
     },
-    "homepage": "https://github.com/cookedas1/Studio-Moremi#readme"
+    "homepage": "https://github.com/Studio-Moremi/Choco-Ice-Moremi#readme"
   }

@@ -1,7 +1,7 @@
 {
-    "License" {
+    "License": {
         "GPL": "This is Choco Ice Moremi's open source code."
-    }
+    },
     "Choco-Ice-Moremi": "초코 아이스 모레미",
     "moremi": "모레미",
     
@@ -29,15 +29,14 @@
     "plantStrawberry": "딸기 심기",
     "plantStrawberry1": "딸기를 심어요.",
     "waterPlants": "물 주기",
-    "waterPlants": "모든 작물에 물을 줘요.",
+    "waterPlants1": "모든 작물에 물을 줘요.",
     "clearWithered": "썩은 식물 치우기",
-    "clearWithered": "썩은 식물을 치워요.",
+    "clearWithered1": "썩은 식물을 치워요.",
     "harvest": "수확하기",
     "harvest1": "모든 작물을 수확해요.",
     
     "error100": "에러가 발생했어요! [sqlite3 Database Error]",
     "error101": "에러가 발생했어요! [mysql Database Error]",
     "error102": "이미 가입을 했어요!",
-    "error103": "시간초과로 가입이 취소되었어요. /가입으로 다시 시도해봐요!",
     "error104": "계정에 로그인이 되어있지 않아요. /가입을 통해 로그인을 해봐요!"
 }

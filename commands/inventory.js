@@ -4,6 +4,7 @@
 */
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const db = require('../utils/db');
+const LANG = require('../language.json')
 
 const data = new SlashCommandBuilder()
   .setName('인벤토리')
