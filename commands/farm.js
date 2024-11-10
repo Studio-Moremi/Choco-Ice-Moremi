@@ -9,8 +9,8 @@ const initialFarm = Array(5).fill(Array(5).fill('🟫'));
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName(`farm`)
-    .setDescription(`farmdesc`),
+    .setName(LANG.farm)
+    .setDescription(LANG.farmdesc),
 
   run: async ({ interaction }) => {
     const discordId = interaction.user.id;
@@ -18,10 +18,10 @@ module.exports = {
     db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], (err, row) => {
       if (err) {
         console.error('Database error:', err.message);
-        return interaction.reply({ content: `error100`, ephemeral: true });
+        return interaction.reply({ content: LANG.error100, ephemeral: true });
       }
       if (!row) {
-        return interaction.reply({ content: `error104`, ephemeral: true });
+        return interaction.reply({ content: LANG.error104, ephemeral: true });
       }
 
       let farmStatus = initialFarm.map(row => row.join('')).join('\n');
@@ -35,14 +35,14 @@ module.exports = {
         .addComponents(
           new StringSelectMenuBuilder()
             .setCustomId('farm_action')
-            .setPlaceholder(`SelectItem`)
+            .setPlaceholder(LANG.SelectItem)
             .addOptions([
-              { label: `plantLettuce`, description: 'plantLettuce1', value: 'lettuce' },
-              { label: `plantTomato`, description: `plantTomato1`, value: 'tomato' },
-              { label: `plantStrawberry`, description: `plantStrawberry1`, value: 'strawberry' },
-              { label: `waterPlants`, description: `waterPlants1`, value: 'water' },
-              { label: `clear_withered`, description: `clear_withered1`, value: 'clear_withered' },
-              { label: `harvest`, description: `harvest1`, value: 'harvest' }
+              { label: LANG.plantLettuce, description: LANG.plantLettuce1, value: 'lettuce' },
+              { label: LANG.plantTomato, description: LANG.plantTomato1, value: 'tomato' },
+              { label: LANG.plantStrawberry, description: LANG.plantStrawberry1, value: 'strawberry' },
+              { label: LANG.waterPlants, description: LANG.waterPlants1, value: 'water' },
+              { label: LANG.clearWithered, description: LANG.clearWithered1, value: 'clear_withered' },
+              { label: LANG.harvest, description: LANG.harvest1, value: 'harvest' }
             ])
         );
 

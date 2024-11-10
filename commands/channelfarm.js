@@ -9,11 +9,11 @@ const initialSharedFarm = Array(10).fill(Array(10).fill('🟫'));
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName(`channelfarm`)
-    .setDescription(`channelfarmdesc`)
+    .setName(LANG.channelfarm)
+    .setDescription(LANG.channelfarmdesc)
     .addChannelOption(option =>
       option.setName('channel')
-        .setDescription(`channelfarmoption`)
+        .setDescription(LANG.channelfarmoption)
         .setRequired(true)
     ),
 
@@ -24,16 +24,16 @@ module.exports = {
     db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], (err, userRow) => {
       if (err) {
         console.error('Database error:', err.message);
-        return interaction.reply({ content: `error100`, ephemeral: true });
+        return interaction.reply({ content: LANG.error100, ephemeral: true });
       }
       if (!userRow) {
-        return interaction.reply({ content: `error104`, ephemeral: true });
+        return interaction.reply({ content: LANG.error104, ephemeral: true });
       }
 
       db.get(`SELECT farm_data FROM shared_farm WHERE channel_id = ?`, [channel.id], async (err, farmRow) => {
         if (err) {
           console.error('Database error:', err.message);
-          return interaction.reply({ content: `error100`, ephemeral: true });
+          return interaction.reply({ content: LANG.error100, ephemeral: true });
         }
 
         const farmData = farmRow ? JSON.parse(farmRow.farm_data) : initialSharedFarm;
@@ -47,14 +47,14 @@ module.exports = {
           .addComponents(
             new StringSelectMenuBuilder()
               .setCustomId('shared_farm_action')
-              .setPlaceholder(`SelectItem`)
+              .setPlaceholder(LANG.SelectItem)
               .addOptions([
-                { label: `plantLettuce`, description: `plantLettuce1`, value: 'plant_lettuce' },
-                { label: `plantTomato`, description: `plantTomato1`, value: 'plant_tomato' },
-                { label: `plantStrawberry`, description: `plantStrawberry1`, value: 'plant_strawberry' },
-                { label: `waterPlants`, description: `waterPlants1`, value: 'water_plants' },
-                { label: `clearWithered`, description: `clearWithered1`, value: 'clear_withered' },
-                { label: `harvest`, description: `harvest1`, value: 'harvest' }
+                { label: LANG.plantLettuce, description: LANG.plantLettuce1, value: 'plant_lettuce' },
+                { label: LANG.plantTomato, description: LANG.plantTomato1, value: 'plant_tomato' },
+                { label: LANG.plantStrawberry, description: LANG.plantStrawberry1, value: 'plant_strawberry' },
+                { label: LANG.waterPlants, description: LANG.waterPlants1, value: 'water_plants' },
+                { label: LANG.clearWithered, description: LANG.clearWithered1, value: 'clear_withered' },
+                { label: LANG.harvest, description: LANG.harvest1, value: 'harvest' }
               ])
           );
 

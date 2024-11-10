@@ -1,6 +1,6 @@
 /* License is GPL 3.0.
 - made by studio moremi
- - support@studio-moremi.kro.kr
+- support@studio-moremi.kro.kr
 */
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const db = require('../utils/db');
@@ -8,10 +8,10 @@ const LANG = require("../language.json");
 
 module.exports = {
   data: {
-    name: `createuser`,
-    description: `userdesc`
-  }
-}
+    name: LANG.createuser,
+    description: LANG.userdesc
+  },
+
   run: async ({ interaction }) => {
     const consentEmbed = new EmbedBuilder()
       .setColor(0xffffff)
@@ -24,7 +24,7 @@ module.exports = {
 
     const agreeButton = new ButtonBuilder()
       .setCustomId('동의')
-      .setLabel(`Yes`)
+      .setLabel(LANG.Yes)
       .setStyle(ButtonStyle.Success);
 
     const row = new ActionRowBuilder().addComponents(agreeButton);
@@ -32,6 +32,7 @@ module.exports = {
     await interaction.reply({ embeds: [consentEmbed], components: [row] });
 
     const filter = i => i.customId === '동의' && i.user.id === interaction.user.id;
+    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 100000000000000 }); // 3170979년
 
     collector.on('collect', async (i) => {
       const discordId = interaction.user.id;
@@ -39,12 +40,12 @@ module.exports = {
       db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], async (err, row) => {
         if (err) {
           console.error('Database error:', err.message);
-          await i.update({ content: `error100`, components: [] });
+          await i.update({ content: LANG.error100, components: [] });
           return;
         }
 
         if (row) {
-          await i.update({ content: `error103`, components: [] });
+          await i.update({ content: LANG.error103, components: [] });
         } else {
           const initialCoins = 2000;
           db.run(
@@ -53,9 +54,9 @@ module.exports = {
             async (err) => {
               if (err) {
                 console.error('Database error:', err.message);
-                await i.update({ content: `error100`, components: [] });
+                await i.update({ content: LANG.error100, components: [] });
               } else {
-                await i.update({ content: `createuserO`, components: [] });
+                await i.update({ content: LANG.createuserO, components: [] });
               }
             }
           );
@@ -63,3 +64,4 @@ module.exports = {
       });
     });
   }
+};

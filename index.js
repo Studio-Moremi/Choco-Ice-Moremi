@@ -20,7 +20,6 @@ new CommandHandler({
   client,
   commandsPath: path.join(__dirname, "commands"),
   utilsPath: path.join (__dirname, "utils"),
-  
 });
 
 client.on("ready", (c) => {

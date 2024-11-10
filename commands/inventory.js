@@ -7,8 +7,8 @@ const db = require('../utils/db');
 const LANG = require('../language.json')
 
 const data = new SlashCommandBuilder()
-  .setName('인벤토리')
-  .setDescription('아이템과 코인을 보여줘요!');
+  .setName(LANG.inventory)
+  .setDescription(LANG.inventoryDesc);
 
 module.exports = {
   data,
@@ -18,13 +18,13 @@ module.exports = {
     db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], (err, row) => {
       if (err) {
         console.error('Database error:', err.message);
-        interaction.reply(`error100`);
+        interaction.reply(LANG.error100);
         return;
       }
 
       if (!row) {
         return interaction.reply({
-          content: `error104`,
+          content: LANG.error104,
           ephemeral: true,
         });
       }
@@ -34,7 +34,7 @@ module.exports = {
       db.all(`SELECT item_name FROM inventory WHERE discord_id = ?`, [discordId], (err, items) => {
         if (err) {
           console.error('Database error:', err.message);
-          interaction.reply('에러가 발생했어요! 해당 에러가 지속될 경우 관리자에게 문의하세요. [Database Error.]');
+          interaction.reply(LANG.error100);
           return;
         }
 
@@ -43,8 +43,8 @@ module.exports = {
         const embed = new EmbedBuilder()
           .setColor(0xffffff)
           .setTitle(`${interaction.user.username}님의 인벤토리`)
-          .setDescription(`현재 코인: ${coinBalance}` + `coin`)
-          .addFields({ name: '아이템 목록', value: itemList });
+          .setDescription(`현재 코인: ${coinBalance}` + LANG.coin)
+          .addFields({ name: LANG.Itemlist, value: itemList });
 
         interaction.reply({ embeds: [embed] });
       });
