@@ -14,7 +14,12 @@
     
     "help": "도움말",
     "helpdesc": "도움말을 보여줘요.",
-    "helpoption": "조회할 도움말을 선택하세요."
+    "helpoption": "조회할 도움말을 선택하세요.",
+    
+    "createuser": "가입",
+    "userdesc": "초코 아이스 모레미에 가입해요.",
+    "Yes": "동의",
+    "createuserO": "가입이 성공적으로 완료되었어요. 보너스로 2000코인을 드릴게요!",
     
     "SelectItem": "아이템 선택",
     "plantLettuce": "상추 심기",
@@ -33,5 +38,6 @@
     "error100": "에러가 발생했어요! [sqlite3 Database Error]",
     "error101": "에러가 발생했어요! [mysql Database Error]",
     "error102": "이미 가입을 했어요!",
+    "error103": "시간초과로 가입이 취소되었어요. /가입으로 다시 시도해봐요!",
     "error104": "계정에 로그인이 되어있지 않아요. /가입을 통해 로그인을 해봐요!"
 }
