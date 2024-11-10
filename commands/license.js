@@ -33,7 +33,8 @@ module.exports = {
           '이 명령어를 삭제할 시 라이선스 위반으로 간주합니다.\n',
           '레포지토리 주소: [choco-ice-moremi](https://github.com/Teamforest-code/Choco-Ice-Moremi)',
           '제작한 곳: [Studio Moremi](https://discord.gg/QtVTm3bzDW)'
-        ].join('\n'));
+        ].join('\n'))
+        .setFooter('Made by cookedas1');
     }
 
     await interaction.reply({ embeds: [embed] });
