@@ -24,6 +24,7 @@
     "inventory": "인벤토리",
     "inventoryDesc": "아이템과 코인을 보여줘요!",
     "Itemlist": "아이템 목록",
+    "noItem": "아이템이 없어요.",
     
     "SelectItem": "아이템 선택",
     "plantLettuce": "상추 심기",

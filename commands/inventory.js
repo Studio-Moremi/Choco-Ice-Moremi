@@ -31,19 +31,21 @@ module.exports = {
 
       const coinBalance = row.coins;
 
-      db.all(`SELECT item_name FROM inventory WHERE discord_id = ?`, [discordId], (err, items) => {
+      db.all(`SELECT item_name, quantity FROM inventory WHERE discord_id = ?`, [discordId], (err, items) => {
         if (err) {
           console.error('Database error:', err.message);
           interaction.reply(LANG.error100);
           return;
         }
 
-        const itemList = items.length > 0 ? items.map(item => item.item_name).join('\n') : '아이템이 없어요.';
+        const itemList = items.length > 0 
+          ? items.map(item => `${item.item_name}: ${item.quantity}개`).join('\n') 
+          : LANG.noItem;
 
         const embed = new EmbedBuilder()
           .setColor(0xffffff)
           .setTitle(`${interaction.user.username}님의 인벤토리`)
-          .setDescription(`현재 코인: ${coinBalance}` + LANG.coin)
+          .setDescription(`현재 코인: ${coinBalance} ${LANG.coin}`)
           .addFields({ name: LANG.Itemlist, value: itemList });
 
         interaction.reply({ embeds: [embed] });
