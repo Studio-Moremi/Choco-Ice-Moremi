@@ -17,13 +17,13 @@ module.exports = {
     db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], (err, row) => {
       if (err) {
         console.error('Database error:', err.message);
-        interaction.reply('에러가 발생했어요! 해당 에러가 지속될 경우 관리자에게 문의하세요. [Database Error.]');
+        interaction.reply(`error100`);
         return;
       }
 
       if (!row) {
         return interaction.reply({
-          content: '계정에 로그인되지 않았어요. `/가입`을 통해 로그인해봐요!',
+          content: `error104`,
           ephemeral: true,
         });
       }
@@ -42,7 +42,7 @@ module.exports = {
         const embed = new EmbedBuilder()
           .setColor(0xffffff)
           .setTitle(`${interaction.user.username}님의 인벤토리`)
-          .setDescription(`현재 코인: ${coinBalance} :coin:`)
+          .setDescription(`현재 코인: ${coinBalance}` + `coin`)
           .addFields({ name: '아이템 목록', value: itemList });
 
         interaction.reply({ embeds: [embed] });
