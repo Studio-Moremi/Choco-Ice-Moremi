@@ -24,7 +24,7 @@ module.exports = {
     const helpType = interaction.options.getString('help');
     let embed;
 
-    if (helpType === '모레미') {
+    if (helpType === '초코 아이스 모레미') {
       embed = new EmbedBuilder()
         .setColor(0xffffff)
         .setTitle('본 봇의 라이선스')
