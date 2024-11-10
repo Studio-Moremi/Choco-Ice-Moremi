@@ -4,11 +4,12 @@
 */
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const db = require('../utils/db');
+const LANG = require("../language.json");
 
 module.exports = {
   data: {
-    name: '가입',
-    description: '초코 아이스 모레미에 가입해요.'
+    name: `createuser`,
+    description: `userdesc`'
   },
 
   run: async ({ interaction }) => {
@@ -23,7 +24,7 @@ module.exports = {
 
     const agreeButton = new ButtonBuilder()
       .setCustomId('동의')
-      .setLabel('동의')
+      .setLabel(`Yes`)
       .setStyle(ButtonStyle.Success);
 
     const row = new ActionRowBuilder().addComponents(agreeButton);
@@ -39,12 +40,12 @@ module.exports = {
       db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], async (err, row) => {
         if (err) {
           console.error('Database error:', err.message);
-          await i.update({ content: '에러가 발생했어요! 관리자에게 문의하세요. [Database Error]', components: [] });
+          await i.update({ content: `error100`, components: [] });
           return;
         }
 
         if (row) {
-          await i.update({ content: '이미 계정이 존재합니다!', components: [] });
+          await i.update({ content: `error103`, components: [] });
         } else {
           const initialCoins = 2000;
           db.run(
@@ -53,9 +54,9 @@ module.exports = {
             async (err) => {
               if (err) {
                 console.error('Database error:', err.message);
-                await i.update({ content: '에러가 발생했어요! 관리자에게 문의하세요. [Database Error]', components: [] });
+                await i.update({ content: `error100`, components: [] });
               } else {
-                await i.update({ content: '가입이 성공적으로 완료되었어요! 그리고 2000코인이 지급되었어요!', components: [] });
+                await i.update({ content: `createuserO`, components: [] });
               }
             }
           );
