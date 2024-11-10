@@ -32,7 +32,7 @@ module.exports = {
     await interaction.reply({ embeds: [consentEmbed], components: [row] });
 
     const filter = i => i.customId === '동의' && i.user.id === interaction.user.id;
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 100000000000000 }); // 3170979년
+    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
 
     collector.on('collect', async (i) => {
       const discordId = interaction.user.id;
