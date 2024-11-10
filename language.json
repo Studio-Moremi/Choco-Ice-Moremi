@@ -3,6 +3,13 @@
         "GPL": "This is Choco Ice Moremi's open source code."
     }
     "Choco-Ice-Moremi": "초코 아이스 모레미",
+    "moremi": "모레미",
+    "farm": "농장",
+    "farmdesc": "개인농장을 가꾸어요!",
+    "channelfarm": "공동농장",
+    "channelfarmdesc": "채널에 있는 공동농장을 다른 사람과 가꾸어요!",
+    "channelfarmoption": "농장을 가꿀 채널을 선택하세요.",
+    "coin": "🪙",
     "help": "도움말",
     "helpdesc": "도움말을 보여줘요.",
     "helpoption": "조회할 도움말을 선택하세요."
