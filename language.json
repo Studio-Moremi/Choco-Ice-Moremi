@@ -33,10 +33,5 @@
     "error100": "에러가 발생했어요! [sqlite3 Database Error]",
     "error101": "에러가 발생했어요! [mysql Database Error]",
     "error102": "이미 가입을 했어요!"
+    "error104": "계정에 로그인이 되어있지 않아요. /가입을 통해 로그인을 해봐요!"
 }
-                { label: '상추 심기', description: '상추를 심어요.', value: 'plant_lettuce' },
-                { label: '토마토 심기', description: '토마토를 심어요.', value: 'plant_tomato' },
-                { label: '딸기 심기', description: '딸기를 심어요.', value: 'plant_strawberry' },
-                { label: '물주기', description: '모든 작물에 물을 줘요.', value: 'water_plants' },
-                { label: '썩은 식물 치우기', description: '썩은 작물을 치워요.', value: 'clear_withered' },
-                { label: '수확하기', description: '모든 작물을 수확해요.', value: 'harvest' }
