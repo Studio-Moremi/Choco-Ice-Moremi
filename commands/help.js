@@ -3,6 +3,7 @@
  - support@studio-moremi.kro.kr
 */
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const LANG = require(..\language.json);
 
 const data = new SlashCommandBuilder()
   .setName('도움말')
