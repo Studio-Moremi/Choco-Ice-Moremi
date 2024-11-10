@@ -4,16 +4,16 @@
 */
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const db = require('../utils/db');
-
+const LANG = require("../language.json")
 const initialSharedFarm = Array(10).fill(Array(10).fill('🟫'));
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('공동농장')
-    .setDescription('공동 농장을 보여주고 관리해요!')
+    .setName(`channelfarm`)
+    .setDescription(`channelfarmdesc`)
     .addChannelOption(option =>
       option.setName('channel')
-        .setDescription('공동 농장을 설정할 채널을 선택하세요.')
+        .setDescription(`channelfarmoption`)
         .setRequired(true)
     ),
 
