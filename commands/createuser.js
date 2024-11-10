@@ -32,10 +32,8 @@ module.exports = {
     await interaction.reply({ embeds: [consentEmbed], components: [row] });
 
     const filter = i => i.customId === '동의' && i.user.id === interaction.user.id;
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
 
-    collector.on('collect', async (i) => {
-      const discordId = interaction.user.id;
+    const discordId = interaction.user.id;
 
       db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], async (err, row) => {
         if (err) {
@@ -60,7 +58,6 @@ module.exports = {
               }
             }
           );
-        }
       });
     });
   }
