@@ -4,13 +4,39 @@
     }
     "Choco-Ice-Moremi": "초코 아이스 모레미",
     "moremi": "모레미",
+    
     "farm": "농장",
     "farmdesc": "개인농장을 가꾸어요!",
     "channelfarm": "공동농장",
     "channelfarmdesc": "채널에 있는 공동농장을 다른 사람과 가꾸어요!",
     "channelfarmoption": "농장을 가꿀 채널을 선택하세요.",
     "coin": "🪙",
+    
     "help": "도움말",
     "helpdesc": "도움말을 보여줘요.",
     "helpoption": "조회할 도움말을 선택하세요."
+    
+    "SelectItem": "아이템 선택",
+    "plantLettuce": "상추 심기",
+    "plantLettuce1": "상추를 심어요.",
+    "plantTomato": "토마토 심기",
+    "plantTomato1": "토마토를 심어요.",
+    "plantStrawberry": "딸기 심기",
+    "plantStrawberry1": "딸기를 심어요.",
+    "waterPlants": "물 주기",
+    "waterPlants": "모든 작물에 물을 줘요.",
+    "clearWithered": "썩은 식물 치우기",
+    "clearWithered": "썩은 식물을 치워요.",
+    "harvest": "수확하기",
+    "harvest1": "모든 작물을 수확해요.",
+    
+    "error100": "에러가 발생했어요! [sqlite3 Database Error]",
+    "error101": "에러가 발생했어요! [mysql Database Error]",
+    "error102": "이미 가입을 했어요!"
 }
+                { label: '상추 심기', description: '상추를 심어요.', value: 'plant_lettuce' },
+                { label: '토마토 심기', description: '토마토를 심어요.', value: 'plant_tomato' },
+                { label: '딸기 심기', description: '딸기를 심어요.', value: 'plant_strawberry' },
+                { label: '물주기', description: '모든 작물에 물을 줘요.', value: 'water_plants' },
+                { label: '썩은 식물 치우기', description: '썩은 작물을 치워요.', value: 'clear_withered' },
+                { label: '수확하기', description: '모든 작물을 수확해요.', value: 'harvest' }
