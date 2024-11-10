@@ -32,6 +32,6 @@
     
     "error100": "에러가 발생했어요! [sqlite3 Database Error]",
     "error101": "에러가 발생했어요! [mysql Database Error]",
-    "error102": "이미 가입을 했어요!"
+    "error102": "이미 가입을 했어요!",
     "error104": "계정에 로그인이 되어있지 않아요. /가입을 통해 로그인을 해봐요!"
 }
