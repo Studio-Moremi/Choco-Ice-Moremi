@@ -4,8 +4,8 @@
 */
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const db = require('../utils/db');
-const LANG = require("../language.json")
-const initialSharedFarm = Array(10).fill(Array(10).fill('🟫'));
+const LANG = require("../language.json");
+const initialSharedFarm = Array(10).fill().map(() => Array(10).fill('🟫'));
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -59,6 +59,84 @@ module.exports = {
           );
 
         await interaction.reply({ embeds: [embed], components: [actionRow] });
+
+        const collector = interaction.channel.createMessageComponentCollector({
+          filter: i => i.user.id === discordId,
+          time: 60000,
+        });
+
+        collector.on('collect', async (i) => {
+          if (i.customId !== 'shared_farm_action') return;
+
+          const action = i.values[0];
+          let updateMessage = '';
+
+          if (action === 'plant_lettuce' || action === 'plant_tomato' || action === 'plant_strawberry') {
+            const cropEmoji = action === 'plant_lettuce' ? '🥬' : action === 'plant_tomato' ? '🍅' : '🍓';
+            updateMessage = `${i.user.username}님이 ${cropEmoji === '🥬' ? '상추' : cropEmoji === '🍅' ? '토마토' : '딸기'}를 심었어요!`;
+
+            for (let row = 0; row < farmData.length; row++) {
+              const soilIndex = farmData[row].indexOf('🟫');
+              if (soilIndex !== -1) {
+                farmData[row][soilIndex] = cropEmoji;
+                break;
+              }
+            }
+
+          } else if (action === 'water_plants') {
+            updateMessage = farmData.flat().some(cell => cell === '🥬' || cell === '🍅' || cell === '🍓')
+              ? '물을 줬어요!'
+              : '물을 줄 필요가 없어요.';
+
+          } else if (action === 'clear_withered') {
+            updateMessage = farmData.flat().some(cell => cell === '🧹')
+              ? '썩은 식물을 치웠어요!'
+              : '치울 썩은 식물이 없어요.';
+            farmData.forEach((row, rowIndex) => {
+              farmData[rowIndex] = row.map(cell => (cell === '🧹' ? '🟫' : cell));
+            });
+
+          } else if (action === 'harvest') {
+            const crops = farmData.flat().filter(cell => cell === '🥬' || cell === '🍅' || cell === '🍓');
+            if (crops.length) {
+              const harvestSummary = crops.reduce((acc, crop) => {
+                const name = crop === '🥬' ? '상추' : crop === '🍅' ? '토마토' : '딸기';
+                acc[name] = (acc[name] || 0) + 1;
+                return acc;
+              }, {});
+
+              Object.keys(harvestSummary).forEach(cropName => {
+                db.run(
+                  `INSERT INTO inventory (discord_id, item_name, quantity) VALUES (?, ?, ?)
+                  ON CONFLICT(discord_id, item_name) DO UPDATE SET quantity = quantity + ?`,
+                  [discordId, cropName, harvestSummary[cropName], harvestSummary[cropName]]
+                );
+              });
+
+              updateMessage = `수확 완료! 인벤토리에 추가되었어요: ${Object.entries(harvestSummary)
+                .map(([name, count]) => `${name}: ${count}개`)
+                .join(', ')}`;
+              farmData.forEach((row, rowIndex) => {
+                farmData[rowIndex] = row.map(cell => (cell === '🥬' || cell === '🍅' || cell === '🍓' ? '🟫' : cell));
+              });
+            } else {
+              updateMessage = '수확할 수 있는 작물이 없어요.';
+            }
+          }
+
+          db.run(
+            `INSERT INTO shared_farm (channel_id, farm_data) VALUES (?, ?)
+            ON CONFLICT(channel_id) DO UPDATE SET farm_data = ?`,
+            [channel.id, JSON.stringify(farmData), JSON.stringify(farmData)]
+          );
+
+          const updatedEmbed = new EmbedBuilder()
+            .setColor(0xffffff)
+            .setTitle(`공동 농장 (${channel.name} 채널)`)
+            .setDescription(farmData.map(row => row.join('')).join('\n'));
+
+          await i.update({ embeds: [updatedEmbed], content: updateMessage, components: [actionRow] });
+        });
       });
     });
   }
