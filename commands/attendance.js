@@ -1,14 +1,15 @@
 /* License is GPL 3.0.
 - made by studio moremi
  - support@studio-moremi.kro.kr
+미완성 코드
 */
 const { EmbedBuilder } = require('discord.js');
 const LANG = require('../language.json')
 
 module.exports = {
   data: {
-    name: '출석',
-    description: '출석으로 보상을 받아요!'
+    name: LANG.attendance,
+    description: LANG.attendance1
   },
 
   run: async ({ interaction }) => {
