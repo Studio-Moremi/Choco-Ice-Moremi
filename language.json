@@ -10,7 +10,7 @@
     "cofarm": "공동농장",
     "cofarmdesc": "채널에 있는 공동농장을 다른 사람과 가꾸어요!",
     "cofarmoption": "농장을 가꿀 채널을 선택하세요.",
-    "coin": "🪙",
+    "coin": "💎",
 
     "Xharvest": "수확할 수 있는 작물이 없어요.",
     "clearwithered": "썩은 식물을 치웠어요!",
@@ -32,7 +32,7 @@
     "createuser": "가입",
     "userdesc": "초코 아이스 모레미에 가입해요.",
     "Yes": "동의",
-    "createuserO": "가입이 성공적으로 완료되었어요. 보너스로 2000코인을 드릴게요!",
+    "createuserO": "가입이 성공적으로 완료되었어요. 가입 기념으로 2000💎을 드릴게요!",
 
     "inventory": "인벤토리",
     "inventoryDesc": "아이템과 코인을 보여줘요!",
