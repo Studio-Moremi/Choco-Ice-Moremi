@@ -1,6 +1,6 @@
 /* License is GPL 3.0.
 - made by studio moremi
- - support@studio-moremi.kro.kr
+- support@studio-moremi.kro.kr
 */
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
@@ -46,6 +46,14 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       channel_id TEXT UNIQUE NOT NULL,
       farm_data TEXT DEFAULT ''
+    )
+  `);
+  db.run(`
+    CREATE TABLE IF NOT EXISTS attendance (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      discord_id TEXT NOT NULL,
+      date TEXT NOT NULL,
+      reward INTEGER DEFAULT 0
     )
   `);
 });
