@@ -28,6 +28,9 @@
     
     "attendance": "출석",
     "attendance1": "출석으로 보상을 받아요!",
+    "alreadyChecked": "이미 출석을 하셨어요! 내일 다시 시도해주세요!",
+    "boosterBonus": "어랏! 서버 부스터이시네요! 보석 10개를 드릴게요!",
+    "footerWeekendDouble": "주말에는 2배!",
     
     "createuser": "가입",
     "userdesc": "초코 아이스 모레미에 가입해요.",
