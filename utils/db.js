@@ -8,7 +8,7 @@ const path = require('path');
 const dbPath = path.resolve(__dirname, 'moremi.db');
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error('Database connection failed:', err.message);
+    console.error('SQLite Database connection failed:', err.message);
   } else {
     console.log('Connected to the moremi.db SQLite database.');
   }
