@@ -7,10 +7,20 @@
     
     "farm": "농장",
     "farmdesc": "개인농장을 가꾸어요!",
-    "channelfarm": "공동농장",
-    "channelfarmdesc": "채널에 있는 공동농장을 다른 사람과 가꾸어요!",
-    "channelfarmoption": "농장을 가꿀 채널을 선택하세요.",
+    "cofarm": "공동농장",
+    "cofarmdesc": "채널에 있는 공동농장을 다른 사람과 가꾸어요!",
+    "cofarmoption": "농장을 가꿀 채널을 선택하세요.",
     "coin": "🪙",
+
+    "Xharvest": "수확할 수 있는 작물이 없어요.",
+    "clearwithered": "썩은 식물을 치웠어요!",
+    "Xclearwithered": "치울 썩은 식물이 없어요.",
+    "water": "물을 줬어요!",
+    "Xwater": "물을 줄 필요가 없어요!",
+
+    "Lettuce": "상추",
+    "Strawberry": "딸기",
+    "Tomato": "토마토",
     
     "help": "도움말",
     "helpdesc": "도움말을 보여줘요.",

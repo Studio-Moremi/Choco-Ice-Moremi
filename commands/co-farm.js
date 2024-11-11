@@ -2,6 +2,10 @@
 - made by studio moremi
  - support@studio-moremi.kro.kr
 */
+/**
+ * 쿸으다스 수정 (92 ~ 127)
+ * ` -> LANG
+ */
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const db = require('../utils/db');
 const LANG = require("../language.json");
@@ -9,11 +13,11 @@ const initialSharedFarm = Array(10).fill().map(() => Array(10).fill('🟫'));
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName(LANG.channelfarm)
-    .setDescription(LANG.channelfarmdesc)
+    .setName(LANG.cofarm)
+    .setDescription(LANG.cofarmdesc)
     .addChannelOption(option =>
       option.setName('channel')
-        .setDescription(LANG.channelfarmoption)
+        .setDescription(LANG.cofarmoption)
         .setRequired(true)
     ),
 
@@ -85,13 +89,13 @@ module.exports = {
 
           } else if (action === 'water_plants') {
             updateMessage = farmData.flat().some(cell => cell === '🥬' || cell === '🍅' || cell === '🍓')
-              ? '물을 줬어요!'
-              : '물을 줄 필요가 없어요.';
+              ? LANG.water
+              : LANG.Xwater;
 
           } else if (action === 'clear_withered') {
             updateMessage = farmData.flat().some(cell => cell === '🧹')
-              ? '썩은 식물을 치웠어요!'
-              : '치울 썩은 식물이 없어요.';
+              ? LANG.clearwithered
+              : LANG.Xclearwithered;
             farmData.forEach((row, rowIndex) => {
               farmData[rowIndex] = row.map(cell => (cell === '🧹' ? '🟫' : cell));
             });
@@ -120,7 +124,7 @@ module.exports = {
                 farmData[rowIndex] = row.map(cell => (cell === '🥬' || cell === '🍅' || cell === '🍓' ? '🟫' : cell));
               });
             } else {
-              updateMessage = '수확할 수 있는 작물이 없어요.';
+              updateMessage = LANG.Xharvest;
             }
           }
 

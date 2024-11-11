@@ -46,7 +46,7 @@ module.exports = {
           .setColor(0xffffff)
           .setTitle(`${interaction.user.username}님의 인벤토리`)
           .setDescription(`현재 코인: ${coinBalance} ${LANG.coin}`)
-          .addFields({ name: LANG.Itemlist, value: itemList });
+          .addFields([{ name: LANG.Itemlist, value: itemList, inline: false }]);
 
         interaction.reply({ embeds: [embed] });
       });

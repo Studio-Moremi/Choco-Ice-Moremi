@@ -2,6 +2,10 @@
 - made by studio moremi
 - support@studio-moremi.kro.kr
 */
+/**
+ * 쿸으다스 수정 (65)
+ * 중괄호 빼먹었네
+ */
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const db = require('../utils/db');
 const LANG = require("../language.json");
@@ -31,34 +35,32 @@ module.exports = {
 
     await interaction.reply({ embeds: [consentEmbed], components: [row] });
 
-    const filter = i => i.customId === '동의' && i.user.id === interaction.user.id;
-
     const discordId = interaction.user.id;
 
-      db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], async (err, row) => {
-        if (err) {
-          console.error('Database error:', err.message);
-          await i.update({ content: LANG.error100, components: [] });
-          return;
-        }
+    db.get(`SELECT * FROM users WHERE discord_id = ?`, [discordId], async (err, row) => {
+      if (err) {
+        console.error('Database error:', err.message);
+        await interaction.editReply({ content: LANG.error100, components: [] });
+        return;
+      }
 
-        if (row) {
-          await i.update({ content: LANG.error103, components: [] });
-        } else {
-          const initialCoins = 2000;
-          db.run(
-            `INSERT INTO users (discord_id, coins) VALUES (?, ?)`,
-            [discordId, initialCoins],
-            async (err) => {
-              if (err) {
-                console.error('Database error:', err.message);
-                await i.update({ content: LANG.error100, components: [] });
-              } else {
-                await i.update({ content: LANG.createuserO, components: [] });
-              }
+      if (row) {
+        await interaction.editReply({ content: LANG.error103, components: [] });
+      } else {
+        const initialCoins = 2000;
+        db.run(
+          `INSERT INTO users (discord_id, coins) VALUES (?, ?)`,
+          [discordId, initialCoins],
+          async (err) => {
+            if (err) {
+              console.error('Database error:', err.message);
+              await interaction.editReply({ content: LANG.error100, components: [] });
+            } else {
+              await interaction.editReply({ content: LANG.createuserO, components: [] });
             }
-          );
-      });
+          }
+        );
+      }
     });
   }
 };
