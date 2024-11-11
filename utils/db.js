@@ -53,6 +53,7 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       discord_id TEXT NOT NULL,
       date TEXT NOT NULL,
+      year TEXT NOT NULL,
       reward INTEGER DEFAULT 0
     )
   `);
