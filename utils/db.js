@@ -48,12 +48,14 @@ db.serialize(() => {
       farm_data TEXT DEFAULT ''
     )
   `);
+
   db.run(`
     CREATE TABLE IF NOT EXISTS attendance (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       discord_id TEXT NOT NULL,
-      date TEXT NOT NULL,
-      year TEXT NOT NULL,
+      year INTEGER NOT NULL,
+      month INTEGER NOT NULL,
+      day INTEGER NOT NULL,
       reward INTEGER DEFAULT 0
     )
   `);
