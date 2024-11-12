@@ -56,6 +56,7 @@ db.serialize(() => {
       year INTEGER NOT NULL,
       month INTEGER NOT NULL,
       day INTEGER NOT NULL,
+      days INTEGER NOT NULL,
       reward INTEGER DEFAULT 0
     )
   `);
