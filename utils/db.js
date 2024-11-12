@@ -50,14 +50,14 @@ db.serialize(() => {
   `);
 
   db.run(`
-    CREATE TABLE IF NOT EXISTS attendance (
+    CREATE TABLE attendance (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       discord_id TEXT NOT NULL,
       year INTEGER NOT NULL,
       month INTEGER NOT NULL,
-      day INTEGER NOT NULL,
-      days INTEGER NOT NULL,
-      reward INTEGER DEFAULT 0
+      day INTEGER DEFAULT 1,
+      reward INTEGER DEFAULT 0,
+      days INTEGER DEFAULT 0
     )
   `);
 });
