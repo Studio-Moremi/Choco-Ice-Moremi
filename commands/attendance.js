@@ -58,7 +58,7 @@ module.exports = {
           return interaction.reply(LANG.error100);
         }
 
-        db.run(`UPDATE users SET diamonds = diamonds + ? WHERE discord_id = ?`, [attendanceReward, discordId], (err) => {
+        db.run(`UPDATE users SET coins = coins + ? WHERE discord_id = ?`, [attendanceReward, discordId], (err) => {
           if (err) {
             console.error('Database error:', err.message);
             return interaction.reply(LANG.error100);
@@ -69,7 +69,7 @@ module.exports = {
           for (let weekStart = 1; weekStart <= daysInMonth; weekStart += 7) {
             const weekDays = Array.from({ length: 7 }, (_, i) => weekStart + i).filter(day => day <= daysInMonth);
             if (weekDays.every(day => attendanceData.includes(day))) {
-              db.run(`UPDATE users SET diamonds = diamonds + 7 WHERE discord_id = ?`, [discordId], (err) => {
+              db.run(`UPDATE users SET coins = coins + 7 WHERE discord_id = ?`, [discordId], (err) => {
                 if (err) {
                   console.error('Database error:', err.message);
                 }
