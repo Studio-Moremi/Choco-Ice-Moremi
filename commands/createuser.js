@@ -47,7 +47,7 @@ module.exports = {
       if (row) {
         await interaction.editReply({ content: LANG.error103, components: [] });
       } else {
-        const initialCoins = 2000;
+        const initialCoins = 10;
         db.run(
           `INSERT INTO users (discord_id, coins) VALUES (?, ?)`,
           [discordId, initialCoins],
