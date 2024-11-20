@@ -22,6 +22,12 @@ new CommandHandler({
   utilsPath: path.join (__dirname, "utils"),
 });
 
+const queue = new Array();
+
+module.export = {
+ queue
+}
+
 client.on("ready", (c) => {
   console.log(`bot is online!`);
 });
