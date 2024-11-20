@@ -32,13 +32,15 @@ module.exports = {
       embed = new EmbedBuilder()
         .setColor(0xffffff)
         .setTitle('초코 아이스 모레미 도움말')
-        .setDescription([
-          '/가입 - 초코 아이스 모레미에 가입해요.',
-          '/인벤토리 - 인벤토리를 확인할 수 있어요.',
-          '/봇정보 - 초코 아이스 모레미에 대해 알려줘요.',
-          '/농장 - 자신의 농장을 보여줘요.',
-          '/공동농장 - 채널의 공동농장을 보여줘요.'
-        ].join('\n'));
+        .setDescription('초코 아이스 모레미의 명령어 들어있어요.')
+        .addFields(
+          { name: '농장 🧑‍🌾', value: '농장, 공동농장', inline: true },
+          { name: '계정 🧑', value: '어카운드연동, 가입', inline: true },
+          { name: '정보 📰', value: '도움말, 봇정보, 라이선스, 우편함', inline: true },
+          { name: '생활?ㄴ', value: '출석, 인벤토리', inline: true },
+          { name: '음악 🎧', value: '틀어, 멈춰, 연결해', inline: true }
+        )
+        .setFooter('Hello?');
     }
 
     await interaction.reply({ embeds: [embed] });

@@ -6,6 +6,7 @@ require("dotenv").config();
 const { Client, IntentsBitField } = require("discord.js");
 const { CommandHandler } = require("djs-commander");
 const path = require("path");
+const queue = new Array();
 
 const client = new Client({
   intents: [
@@ -20,9 +21,8 @@ new CommandHandler({
   client,
   commandsPath: path.join(__dirname, "commands"),
   utilsPath: path.join (__dirname, "utils"),
+  streamPath: path.join(__dirname, "commands/stream")
 });
-
-const queue = new Array();
 
 module.export = {
  queue

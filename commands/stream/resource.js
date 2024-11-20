@@ -6,7 +6,7 @@
 const { createAudioResource,StreamType } = require(`@discordjs/voice`);
 const ytdl = require('ytdl-core');
 module.export = function resource(url) { 
- return createAudioResource(
+ return createAudioResource
   ytdl(
    url,
    {
