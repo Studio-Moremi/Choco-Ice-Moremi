@@ -46,7 +46,7 @@ module.exports = {
             ])
         );
 
-      interaction.reply({ embeds: [embed], components: [actionRow] });
+      interaction.reply({ embeds: [embed], components: [actionRow], ephermal: true });
 
       const collector = interaction.channel.createMessageComponentCollector({
         filter: i => i.user.id === discordId,
@@ -106,7 +106,7 @@ module.exports = {
           .setTitle(`${interaction.user.username}님의 농장`)
           .setDescription(farmStatus);
 
-        await i.update({ embeds: [updatedEmbed], content: updateMessage, components: [actionRow] });
+        await i.update({ embeds: [updatedEmbed], content: updateMessage, components: [actionRow], ephermal: true });
       });
     });
   },

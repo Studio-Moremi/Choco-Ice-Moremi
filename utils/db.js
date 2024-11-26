@@ -5,7 +5,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-const dbPath = path.resolve(__dirname, 'moremi.db');
+const dbPath = path.resolve(__dirname, 'moremi.db'); // 파일이 없을 때 생성
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('SQLite Database connection failed:', err.message);
@@ -22,7 +22,7 @@ db.serialize(() => {
       join_date TEXT DEFAULT CURRENT_TIMESTAMP,
       coins INTEGER DEFAULT 2000
     )
-  `);
+  `); // 유저 테이블
 
   db.run(`
     CREATE TABLE IF NOT EXISTS inventory (
@@ -31,7 +31,7 @@ db.serialize(() => {
       item_name TEXT NOT NULL,
       quantity INTEGER DEFAULT 1
     )
-  `);
+  `); // 인벤토리 테이블
 
   db.run(`
     CREATE TABLE IF NOT EXISTS personal_farm (
@@ -39,7 +39,7 @@ db.serialize(() => {
       discord_id TEXT NOT NULL,
       farm_data TEXT DEFAULT ''
     )
-  `);
+  `); // 개인 농장 테이블
 
   db.run(`
     CREATE TABLE IF NOT EXISTS shared_farm (
@@ -47,7 +47,7 @@ db.serialize(() => {
       channel_id TEXT UNIQUE NOT NULL,
       farm_data TEXT DEFAULT ''
     )
-  `);
+  `); // 공동농장 테이블
 
   db.run(`
     CREATE TABLE attendance (
@@ -59,7 +59,7 @@ db.serialize(() => {
       reward INTEGER DEFAULT 0,
       days INTEGER DEFAULT 0
     )
-  `);
+  `); // 출석 테이블
 });
 
 module.exports = db;

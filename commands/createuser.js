@@ -33,7 +33,7 @@ module.exports = {
 
     const row = new ActionRowBuilder().addComponents(agreeButton);
 
-    await interaction.reply({ embeds: [consentEmbed], components: [row] });
+    await interaction.reply({ embeds: [consentEmbed], components: [row], ephermal: true });
 
     const discordId = interaction.user.id;
 

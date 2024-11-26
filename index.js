@@ -6,9 +6,8 @@ require("dotenv").config();
 const { Client, IntentsBitField } = require("discord.js");
 const { CommandHandler } = require("djs-commander");
 const path = require("path");
-const queue = new Array();
 
-const client = new Client({
+const client = new Client({ // 클라이언트 세팅, 인텐트 세팅
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
@@ -17,19 +16,15 @@ const client = new Client({
   ],
 });
 
-new CommandHandler({
+new CommandHandler({ // 커맨드 세팅
   client,
   commandsPath: path.join(__dirname, "commands"),
   utilsPath: path.join (__dirname, "utils"),
   streamPath: path.join(__dirname, "commands/stream")
 });
 
-module.export = {
- queue
-}
-
 client.on("ready", (c) => {
   console.log(`bot is online!`);
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN); // 봇 실행
