@@ -21,6 +21,8 @@ db.serialize(() => {
       discord_id TEXT UNIQUE NOT NULL,
       join_date TEXT DEFAULT CURRENT_TIMESTAMP,
       coins INTEGER DEFAULT 2000
+      xp INTEGER DEFAULT 0,
+      level INTEGER DEFAULT 1
     )
   `); // 유저 테이블
 
