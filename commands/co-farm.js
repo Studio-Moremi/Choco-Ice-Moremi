@@ -1,6 +1,6 @@
 /* License is GPL 3.0.
 - made by studio moremi
- - support@studio-moremi.kro.kr
+ - op@kkutu.store
 */
 /**
  * 쿸으다스 수정 (92 ~ 127)

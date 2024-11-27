@@ -1,6 +1,6 @@
 /* License is GPL 3.0.
 - made by studio moremi
-- support@studio-moremi.kro.kr
+- op@kkutu.store
 */
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');

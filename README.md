@@ -5,8 +5,8 @@ This repository is choco-ice-moremi's code.
 GPL 3.0
 
 [Made]
-- studio moremi
- - cookedas1 (code)
+- studio moremi (op@kkutu.store)
+ - [cookedas1](https://github.com/cookedas1) (code)
 
 [Use laugage]
 - nodejs 18.0.0
