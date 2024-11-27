@@ -65,7 +65,7 @@ module.exports = {
         await interaction.reply({ embeds: [embed], components: [actionRow] });
 
         const collector = interaction.channel.createMessageComponentCollector({
-          filter: i => i.user.id === discordId,
+          filter: i => i.channel.id === channel.id,
           time: 60000,
         });
 
@@ -131,7 +131,10 @@ module.exports = {
           db.run(
             `INSERT INTO shared_farm (channel_id, farm_data) VALUES (?, ?)
             ON CONFLICT(channel_id) DO UPDATE SET farm_data = ?`,
-            [channel.id, JSON.stringify(farmData), JSON.stringify(farmData)]
+            [channel.id, JSON.stringify(farmData), JSON.stringify(farmData)],
+            (err) => {
+              if (err) console.error('Error saving farm data:', err.message);
+            }
           );
 
           const updatedEmbed = new EmbedBuilder()
