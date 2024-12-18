@@ -1,6 +1,11 @@
 # Choco-Ice-Moremi
 This repository is choco-ice-moremi's code.
 
+# 이 파일을 사용하시기 전
+- 초코 아이스 모레미는 2024년 12월 17일 이후로 무기한 서비스를 종료하게 되었습니다.
+- 그에 따라 업데이트도 무기한 종료되었습니다.
+- 이 봇을 사용할 경우 오류는 니가 고치세요.
+
 [License]
 GPL 3.0
 
